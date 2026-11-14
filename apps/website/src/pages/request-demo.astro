@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { EnquiryForm } from '../components/EnquiryForm';
+---
+
+<Layout
+  title="Request a Live Software Demo | Digikhojindia"
+  description="Experience a live demonstration of Digikhojindia HMIS, LIS analyzer interfacing, and business automation platforms."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Interactive Walkthrough</span>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-2">
+        Request a Live Software Demo
+      </h1>
+      <p class="mt-4 text-sm text-slate-300">
+        Our technical solutions architects will demonstrate the exact workflows relevant to your hospital, laboratory, or business.
+      </p>
+    </div>
+
+    <EnquiryForm client:load defaultType="demo" />
+  </div>
+</Layout>

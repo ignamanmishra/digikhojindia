@@ -1,0 +1,189 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const modules = [
+  {
+    id: 'hmis',
+    name: 'Hospital Management System (HMIS)',
+    category: 'HMIS',
+    desc: 'Paperless hospital automation with OPD, IPD, Bed scheduling, Billing, Pharmacy, and EHR.',
+    features: ['OPD & IPD Registers', 'Ayushman Bharat & TPA Billing', 'Doctor Timetable Scheduling', 'Pharmacy Inventory Control'],
+    tech: ['Cloudflare Workers', 'React', 'D1 SQLite', 'Tailwind CSS'],
+  },
+  {
+    id: 'ceo-dashboard',
+    name: 'Director / CEO Dashboard',
+    category: 'Executive Cockpit',
+    desc: 'Real-time financial, operational, and clinical KPIs for hospital and enterprise executives.',
+    features: ['Real-time Collections', 'Bed Occupancy Heatmaps', 'Department Profit Margins', 'Receivables Aging'],
+    tech: ['React', 'Chart.js', 'Cloudflare Workers'],
+  },
+  {
+    id: 'asset-management',
+    name: 'Asset Management Portal',
+    category: 'Assets & Maintenance',
+    desc: 'End-to-end IT, medical equipment, and fixed asset tracking with QR-code maintenance.',
+    features: ['QR Asset Tagging', 'Breakdown Ticketing', 'Preventive Maintenance Logs', 'Vendor Warranty Audits'],
+    tech: ['TypeScript', 'Cloudflare D1', 'React'],
+  },
+  {
+    id: 'crm-lead',
+    name: 'CRM and Lead Management',
+    category: 'CRM',
+    desc: 'Omnichannel lead capture, multi-stage sales pipelines, automated follow-ups, and sales tracking.',
+    features: ['Multi-stage Sales Funnel', 'Enquiry Auto-capture', 'WhatsApp & Call Reminders', 'Conversion Analytics'],
+    tech: ['Cloudflare Workers', 'Hono', 'React'],
+  },
+  {
+    id: 'lis-interfacing',
+    name: 'Laboratory Management & LIS Integration',
+    category: 'LIS Diagnostic',
+    desc: 'Bi-directional medical equipment interfacing, barcode printing, and instant PDF reports.',
+    features: ['ASTM & HL7 Analyzer Drivers', 'Barcode Tube Printing', 'Instant WhatsApp Report Dispatch', 'Auto-Normal Range Alerts'],
+    tech: ['Node.js', 'Cloudflare Workers', 'Serial/TCP Interfacing'],
+  },
+  {
+    id: 'radiology',
+    name: 'Radiology Management & PACS Links',
+    category: 'Radiology',
+    desc: 'DICOM viewer link, structured radiology reporting templates, and technician workflows.',
+    features: ['Structured Modality Templates', 'Web DICOM Link Integration', 'Technician Worklist Log', 'Digital Radiologist Sign-off'],
+    tech: ['React', 'Cloudflare R2', 'Web DICOM'],
+  },
+  {
+    id: 'ivf',
+    name: 'IVF Management Module',
+    category: 'Speciality IVF',
+    desc: 'Complete clinical embryology, stimulation protocols, and donor tracking.',
+    features: ['Stimulation Charting', 'Embryology & Cryo Log', 'Legal Consent Records', 'Outcome Success Rates'],
+    tech: ['React', 'Cloudflare D1', 'Tailwind CSS'],
+  },
+  {
+    id: 'ot',
+    name: 'Operation Theatre (OT) Management',
+    category: 'Surgical OT',
+    desc: 'Surgical scheduling, anaesthesia records, PAC clearances, and implant logging.',
+    features: ['Interactive OT Slot Grid', 'Pre-Anaesthetic Check (PAC)', 'Intra-Op Vitals Log', 'Surgical Implant Ledger'],
+    tech: ['React', 'Cloudflare Workers'],
+  },
+  {
+    id: 'nursing',
+    name: 'Nursing Management Module',
+    category: 'Clinical Nursing',
+    desc: 'Nurse station dashboard, e-MAR medication charts, intake-output, and vitals recording.',
+    features: ['e-MAR Drug Dispensing', 'Intake-Output Charting', 'Graphical TPR Vitals', 'Shift Handover Notes'],
+    tech: ['React', 'Tailwind CSS'],
+  },
+  {
+    id: 'salon',
+    name: 'Cosmetic and Salon Management',
+    category: 'Aesthetic & Salon',
+    desc: 'Appointment scheduling, service packages, stylist commission, and client loyalty.',
+    features: ['Appointment Scheduling', 'Package Memberships', 'Stylist Commission Ledger', 'Client Loyalty Points'],
+    tech: ['React', 'Cloudflare Workers'],
+  },
+  {
+    id: 'coupons',
+    name: 'Coupon and Voucher Management',
+    category: 'Promotions',
+    desc: 'Dynamic promo codes, redemption tracking, multi-channel campaigns, and POS validation.',
+    features: ['Dynamic Promo Generator', 'Single-use Rules', 'POS Barcode Scanner Check', 'Redemption Analytics'],
+    tech: ['Cloudflare Workers', 'D1'],
+  },
+  {
+    id: 'automation-engine',
+    name: 'Business Automation Systems',
+    category: 'Automation Engine',
+    desc: 'Workflow triggers, automated notifications, lead ingestion, and process automation.',
+    features: ['Custom Workflow Triggers', 'Webhook Ingestion Engine', 'Multi-step Pipeline Automation', 'Real-time Event Logging'],
+    tech: ['Cloudflare Workers', 'Hono', 'TypeScript'],
+  },
+  {
+    id: 'comms',
+    name: 'WhatsApp, SMS and IVR Automation',
+    category: 'Communication',
+    desc: 'Meta Cloud API WhatsApp templates, bulk promotional SMS, and IVR call routing.',
+    features: ['Meta WhatsApp Cloud API', 'DLT-Registered SMS Gateway', 'Interactive IVR Routing', 'Automated Patient Reminders'],
+    tech: ['Meta API', 'Cloudflare Workers', 'Twilio'],
+  },
+  {
+    id: 'mis',
+    name: 'MIS and Reporting Dashboard',
+    category: 'Business Intelligence',
+    desc: 'Automated business intelligence, multi-branch consolidation, and scheduled PDF/Excel reports.',
+    features: ['Multi-branch Consolidation', 'Scheduled Email Digests', 'One-click CSV & PDF Export', 'Interactive Drilldown Charts'],
+    tech: ['React', 'Chart.js', 'D1 SQL Engine'],
+  },
+  {
+    id: 'custom-erp',
+    name: 'Custom Enterprise Software',
+    category: 'Bespoke ERP',
+    desc: 'Tailored web applications, internal operational portals, and cloud-native backends.',
+    features: ['Bespoke Architecture', 'Role-Based Access Control', 'Cloudflare D1/R2 Stack', 'Lifetime Free AMC Subject to Terms'],
+    tech: ['Cloudflare Workers', 'React', 'D1', 'R2'],
+  },
+];
+---
+
+<Layout
+  title="Software Portfolio & Modules | Digikhojindia"
+  description="Explore Digikhojindia's software suite: HMIS, LIS Interfacing, Executive Dashboards, Asset Portals, and Automation Systems. All configurations available for live demo."
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Complete Product Suite</span>
+      <h1 class="text-4xl font-extrabold text-white tracking-tight mt-2 sm:text-5xl">
+        Software Portfolio & Modules
+      </h1>
+      <p class="mt-4 text-sm text-slate-300">
+        Engineered specifically for hospitals, diagnostics, enterprises, and digital organizations.
+      </p>
+      <div class="mt-4 inline-block px-4 py-1.5 rounded-lg bg-amber-950/60 border border-amber-800/40 text-amber-300 text-xs font-semibold">
+        🛡️ Verification Notice: All portfolio items below represent functional demonstration modules prepared by Digikhojindia. Sample deployments are demonstrated upon request.
+      </div>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {modules.map((m) => (
+        <div id={m.id} class="bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-slate-700 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">{m.category}</span>
+              <span class="text-[10px] font-semibold bg-slate-800 text-slate-300 px-2 py-0.5 rounded">
+                Demo Ready
+              </span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">{m.name}</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">{m.desc}</p>
+            
+            <div class="space-y-1.5 mb-6">
+              {m.features.map((f) => (
+                <div class="flex items-center gap-2 text-xs text-slate-300">
+                  <span class="text-blue-400 font-bold">✓</span>
+                  <span>{f}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div class="pt-4 border-t border-slate-800/80 mb-4 flex flex-wrap gap-1.5">
+              {m.tech.map((t) => (
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400">
+                  {t}
+                </span>
+              ))}
+            </div>
+            <a
+              href={`/request-demo?module=${m.id}`}
+              class="w-full block text-center py-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs rounded-lg transition-colors"
+            >
+              Request Live Module Demo
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>

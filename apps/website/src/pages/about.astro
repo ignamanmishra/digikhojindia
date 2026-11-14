@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { BRAND_CONSTANTS } from '@digikhojindia/shared';
+---
+
+<Layout
+  title={`About Us | ${BRAND_CONSTANTS.COMPANY_NAME}`}
+  description="Discover Digikhojindia's mission, founded and owned by Naman Mishra. We automate businesses, engineer custom software, and power healthcare HMIS systems."
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Our Heritage & Mission</span>
+      <h1 class="text-4xl font-extrabold text-white tracking-tight mt-2 sm:text-5xl">
+        Architecting the Future of Business Automation
+      </h1>
+      <p class="mt-4 text-base text-slate-300 leading-relaxed">
+        Digikhojindia was established with a singular objective: to eliminate friction, manual paper trails, and operational chaos from modern businesses through cloud-native automation.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-4">
+        <h3 class="text-xl font-bold text-white">Company Identity</h3>
+        <ul class="space-y-3 text-xs text-slate-300">
+          <li><strong class="text-white">Company Name:</strong> {BRAND_CONSTANTS.COMPANY_NAME}</li>
+          <li><strong class="text-white">Founder & Owner:</strong> {BRAND_CONSTANTS.OWNER_NAME}</li>
+          <li><strong class="text-white">Official Email:</strong> {BRAND_CONSTANTS.OFFICIAL_EMAIL}</li>
+          <li><strong class="text-white">Brand Promise:</strong> "{BRAND_CONSTANTS.TAGLINE}"</li>
+          <li><strong class="text-white">Core Focus:</strong> Hospital Systems, Automation, Custom Web Applications, IT Infrastructure</li>
+        </ul>
+      </div>
+
+      <div class="space-y-4 text-sm text-slate-300 leading-relaxed">
+        <h3 class="text-xl font-bold text-white">Why We Exist</h3>
+        <p>
+          Too many hospitals and enterprises are held back by legacy desktop software that crashes, requires costly on-premise servers, and fails to communicate with modern messaging channels like WhatsApp and SMS.
+        </p>
+        <p>
+          Digikhojindia changes this dynamic by deploying modern <strong>Cloudflare-native architectures</strong> that deliver sub-10ms response times, 100% paperless workflows, and guaranteed lifetime maintenance terms.
+        </p>
+      </div>
+    </div>
+
+    <!-- Leadership Section -->
+    <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-8 sm:p-12 text-center">
+      <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-blue-600 to-sky-400 flex items-center justify-center text-white text-2xl font-black mx-auto mb-4">
+        NM
+      </div>
+      <h3 class="text-2xl font-bold text-white">{BRAND_CONSTANTS.OWNER_NAME}</h3>
+      <p class="text-xs text-blue-400 font-semibold uppercase tracking-wider mt-1">Founder & Principal Systems Architect</p>
+      <p class="mt-4 text-sm text-slate-300 max-w-2xl mx-auto leading-relaxed">
+        "Our clients don't just want software modules; they want their operations to run smoothly on autopilot. When an OPD patient walks in or a web enquiry arrives, the entire software ecosystem must react in milliseconds. That is what Digikhojindia delivers."
+      </p>
+      <div class="mt-6">
+        <a href="mailto:info@digikhojindia.com" class="text-xs text-slate-400 hover:text-white underline">
+          Connect directly: info@digikhojindia.com
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

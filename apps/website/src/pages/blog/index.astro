@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const posts = [
+  {
+    title: 'How Cloud-Native HMIS Is Transforming Healthcare Operations in 2026',
+    slug: 'cloud-native-hmis-transforming-healthcare-2026',
+    excerpt: 'Discover how hospitals are slashing operational overhead and achieving paperless efficiency with modern Cloudflare-native HMIS solutions.',
+    category: 'Hospital IT',
+    author: 'Naman Mishra',
+    date: 'November 10, 2026',
+  },
+  {
+    title: 'Why Business Automation Is the Single Biggest Competitive Edge',
+    slug: 'business-automation-competitive-edge',
+    excerpt: 'Explore why automating repetitive data entry, WhatsApp follow-ups, and invoicing yields a 10x return on investment for growing businesses.',
+    category: 'Automation',
+    author: 'Naman Mishra',
+    date: 'November 12, 2026',
+  },
+];
+---
+
+<Layout
+  title="Technology Blog & Insights | Digikhojindia"
+  description="Read technical articles on hospital software, business process automation, Cloudflare-native cloud systems, and digital growth."
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Technical Articles</span>
+      <h1 class="text-4xl font-extrabold text-white tracking-tight mt-2 sm:text-5xl">
+        Insights, Architecture & Guides
+      </h1>
+      <p class="mt-4 text-sm text-slate-300">
+        Original technical writing on software design, healthcare informatics, and automation by Digikhojindia.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {posts.map((p) => (
+        <article class="bg-slate-900 border border-slate-800 rounded-2xl p-8 hover:border-slate-700 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-bold text-blue-400 uppercase">{p.category}</span>
+              <span class="text-xs text-slate-400">{p.date}</span>
+            </div>
+            <h2 class="text-xl font-bold text-white mb-3 hover:text-blue-400 transition-colors">
+              <a href={`/blog/${p.slug}`}>{p.title}</a>
+            </h2>
+            <p class="text-xs text-slate-400 leading-relaxed mb-6">{p.excerpt}</p>
+          </div>
+          <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs">
+            <span class="text-slate-400">By <strong class="text-slate-200">{p.author}</strong></span>
+            <a href={`/blog/${p.slug}`} class="text-blue-400 font-semibold hover:underline">Read Article →</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</Layout>

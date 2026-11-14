@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { BRAND_CONSTANTS } from '@digikhojindia/shared';
+---
+
+<Layout
+  title={`Refund Policy | ${BRAND_CONSTANTS.COMPANY_NAME}`}
+  description="Official Refund and Cancellation Policy for Digikhojindia software licenses and service retainers."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="mb-12">
+      <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Financial Terms</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-2">Refund Policy</h1>
+      <p class="mt-2 text-xs text-slate-400">Effective: November 2026 • Owned by {BRAND_CONSTANTS.OWNER_NAME}</p>
+    </div>
+
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-12 space-y-6 text-xs text-slate-300 leading-relaxed">
+      <h2 class="text-base font-bold text-white">1. Custom Software & Development Milestones</h2>
+      <p>
+        Bespoke software development projects are executed across agreed milestones (Architecture, Implementation, User Acceptance Testing, and Final Deployment). Payments released upon sign-off of an agreed milestone are non-refundable.
+      </p>
+
+      <h2 class="text-base font-bold text-white pt-4">2. Software Deployment Licences</h2>
+      <p>
+        Due to the proprietary nature of software delivery, license keys and software installations already deployed on client servers are non-refundable. Clients are encouraged to utilize our comprehensive live demo environments prior to contract execution.
+      </p>
+
+      <h2 class="text-base font-bold text-white pt-4">3. Contact for Billing Resolutions</h2>
+      <p>
+        If you believe an invoicing error has occurred, please raise an inquiry with our finance team at <a href={`mailto:${BRAND_CONSTANTS.OFFICIAL_EMAIL}`} class="text-blue-400 underline">{BRAND_CONSTANTS.OFFICIAL_EMAIL}</a> within 15 days of invoice date.
+      </p>
+    </div>
+  </div>
+</Layout>

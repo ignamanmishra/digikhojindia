@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { EnquiryForm } from '../../components/EnquiryForm';
+---
+
+<Layout
+  title="Google Business Profile Management | Digikhojindia Local Growth"
+  description="Optimize your Google Business Profile for maximum local footfall, map rankings, review tracking, and local customer acquisition."
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="max-w-3xl mb-16">
+      <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Local Search Authority</span>
+      <h1 class="text-4xl font-extrabold text-white tracking-tight mt-2 sm:text-5xl">
+        Google Business Profile Management
+      </h1>
+      <p class="mt-4 text-base text-slate-300 leading-relaxed">
+        For hospitals, diagnostic labs, clinics, and local enterprises, 80%+ of new customers find you via Google Maps. We optimize and protect your verified local profile.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <h3 class="text-lg font-bold text-white mb-2">Location Optimization</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">Proper secondary categories, verified geo-coordinates, precise opening hours, and structured service menus.</p>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <h3 class="text-lg font-bold text-white mb-2">Review Management</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">Timely notifications on new patient and client reviews with compliant, professional response drafts.</p>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <h3 class="text-lg font-bold text-white mb-2">Factual Local SEO</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">Strict adherence to official Google Business Profile guidelines. Zero spam, zero fake reviews, pure authentic authority.</p>
+      </div>
+    </div>
+
+    <div class="max-w-2xl mx-auto">
+      <h3 class="text-xl font-bold text-white text-center mb-6">Boost Your Local Presence</h3>
+      <EnquiryForm client:load defaultType="demo" defaultService="Google Business Profile & SEO Optimization" />
+    </div>
+  </div>
+</Layout>

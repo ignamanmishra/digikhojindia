@@ -1,0 +1,29 @@
+{
+  "name": "digikhojindia-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Digikhojindia All-In-One Business Management Platform - Owned by Naman Mishra",
+  "author": "Naman Mishra <info@digikhojindia.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "pnpm --parallel --filter \"./apps/*\" dev",
+    "dev:api": "pnpm --filter @digikhojindia/api dev",
+    "dev:website": "pnpm --filter @digikhojindia/website dev",
+    "dev:admin": "pnpm --filter @digikhojindia/admin dev",
+    "dev:portal": "pnpm --filter @digikhojindia/portal dev",
+    "build": "pnpm -r build",
+    "build:packages": "pnpm --filter \"./packages/*\" build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "typecheck": "tsc -b",
+    "db:migrate:local": "wrangler d1 migrations apply digikhojindia-db --local",
+    "db:seed:local": "wrangler d1 execute digikhojindia-db --local --file=./packages/database/seeds/seed.sql"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

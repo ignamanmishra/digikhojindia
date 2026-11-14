@@ -1,0 +1,29 @@
+name = "digikhojindia-api"
+main = "src/index.ts"
+compatibility_date = "2024-11-12"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+PLATFORM_NAME = "Digikhojindia"
+PLATFORM_TAGLINE = "We Don't Just Build Software. We Automate Your Entire Business."
+OWNER_NAME = "Naman Mishra"
+SUPPORT_EMAIL = "info@digikhojindia.com"
+ENVIRONMENT = "production"
+
+# Cloudflare D1 Database Binding
+[[d1_databases]]
+binding = "DB"
+database_name = "digikhojindia-production-db"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "../../packages/database/migrations"
+
+# Cloudflare R2 Object Storage
+[[r2_buckets]]
+binding = "STORAGE"
+bucket_name = "digikhojindia-assets"
+
+# Local Development Configuration
+[env.development]
+name = "digikhojindia-api-dev"
+[env.development.vars]
+ENVIRONMENT = "development"

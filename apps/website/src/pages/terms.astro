@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { BRAND_CONSTANTS } from '@digikhojindia/shared';
+---
+
+<Layout
+  title={`Terms and Conditions | ${BRAND_CONSTANTS.COMPANY_NAME}`}
+  description="Terms and Conditions governing the use of Digikhojindia software, websites, and service agreements."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="mb-12">
+      <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Legal Agreement</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-2">Terms and Conditions</h1>
+      <p class="mt-2 text-xs text-slate-400">Effective: November 2026 • Owned by {BRAND_CONSTANTS.OWNER_NAME}</p>
+    </div>
+
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-12 space-y-6 text-xs text-slate-300 leading-relaxed">
+      <h2 class="text-base font-bold text-white">1. Agreement to Terms</h2>
+      <p>
+        By accessing or using the services, websites, or software applications provided by <strong>{BRAND_CONSTANTS.COMPANY_NAME}</strong>, you agree to be bound by these Terms and Conditions.
+      </p>
+
+      <h2 class="text-base font-bold text-white pt-4">2. Software Licensing & Deployment</h2>
+      <p>
+        Software licenses granted for HMIS, CRM, or custom applications are specific to the contracting organization and branch locations designated in your commercial contract.
+      </p>
+
+      <h2 class="text-base font-bold text-white pt-4">3. Client Responsibilities</h2>
+      <p>
+        Clients are responsible for maintaining the confidentiality of their portal administrator credentials and ensuring authorized staff adhere to security standards.
+      </p>
+
+      <h2 class="text-base font-bold text-white pt-4">4. Ownership and Intellectual Property</h2>
+      <p>
+        {BRAND_CONSTANTS.FOOTER_COPYRIGHT} {BRAND_CONSTANTS.FOOTER_OWNERSHIP} All proprietary software frameworks, architectures, and brand assets remain the intellectual property of Digikhojindia.
+      </p>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Technical Articles & Thought Leadership | Digikhojindia"
+  description="Technical deep-dives into software development, database design, and business automation."
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Deep Dives</span>
+      <h1 class="text-4xl font-extrabold text-white tracking-tight mt-2 sm:text-5xl">
+        Articles & Engineering Papers
+      </h1>
+      <p class="mt-4 text-sm text-slate-300">
+        In-depth essays examining systems engineering, multi-tenant databases, and operational design patterns.
+      </p>
+    </div>
+
+    <div class="space-y-6">
+      <a href="/blog/cloud-native-hmis-transforming-healthcare-2026" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-blue-500/50 transition-all">
+        <span class="text-xs font-bold text-blue-400 uppercase">Healthcare Systems</span>
+        <h3 class="text-lg font-bold text-white mt-1">Architectural Patterns for Sub-10ms Hospital OPD Software →</h3>
+        <p class="text-xs text-slate-400 mt-2">Analysis of distributed cache invalidation and edge SQLite for hospital counters with zero network dropouts.</p>
+      </a>
+      <a href="/blog/business-automation-competitive-edge" class="block bg-slate-900 border border-slate-800 rounded-2xl p-6 hover:border-blue-500/50 transition-all">
+        <span class="text-xs font-bold text-blue-400 uppercase">Autonomous Workflows</span>
+        <h3 class="text-lg font-bold text-white mt-1">Designing Fail-Safe Event Ingestion for Multi-Channel CRM →</h3>
+        <p class="text-xs text-slate-400 mt-2">How webhook dead-letter queues and idempotency keys prevent duplicate lead generation.</p>
+      </a>
+    </div>
+  </div>
+</Layout>

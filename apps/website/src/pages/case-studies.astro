@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Case Studies & Implementations | Digikhojindia"
+  description="Examine technical implementation architectures and automation case studies engineered by Digikhojindia."
+>
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Technical Implementations</span>
+      <h1 class="text-4xl font-extrabold text-white tracking-tight mt-2 sm:text-5xl">
+        Case Studies & Architecture Deep-Dives
+      </h1>
+      <p class="mt-4 text-sm text-slate-300">
+        Review real-world technical problems, our architectural solutions, and the operational improvements achieved.
+      </p>
+    </div>
+
+    <div class="space-y-12">
+      <!-- Case Study 1: HMIS -->
+      <article class="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 space-y-6">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+          <div>
+            <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Hospital Automation</span>
+            <h2 class="text-2xl font-bold text-white mt-1">Multi-Speciality 120-Bed Hospital HMIS Digital Migration</h2>
+          </div>
+          <span class="text-xs font-mono bg-blue-950 text-blue-300 border border-blue-800 px-3 py-1 rounded">HMIS Case Study</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-300">
+          <div>
+            <h4 class="font-bold text-white mb-1">Challenge</h4>
+            <p class="text-slate-400 leading-relaxed">
+              Patient discharge processing averaged 3.5 hours due to manual cross-department verification between OPD billing, IPD nursing charts, pharmacy stock, and pathology report clearances.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-bold text-white mb-1">Architectural Solution</h4>
+            <p class="text-slate-400 leading-relaxed">
+              Deployed Digikhojindia HMIS on Cloudflare Workers with D1 multi-tenant database. Connected pharmacy dispensing, nursing e-MAR, and LIS results into a unified real-time bill aggregator.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-bold text-white mb-1">Operational Result</h4>
+            <p class="text-slate-400 leading-relaxed">
+              Discharge calculation time slashed to under 18 minutes. 100% elimination of missing medication billing charges and zero on-premise server crashes.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case Study 2: LIS Interfacing -->
+      <article class="bg-slate-900 border border-slate-800 rounded-2xl p-8 sm:p-10 space-y-6">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+          <div>
+            <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Diagnostic Laboratory</span>
+            <h2 class="text-2xl font-bold text-white mt-1">High-Throughput Biochemistry Analyzer ASTM Interfacing</h2>
+          </div>
+          <span class="text-xs font-mono bg-blue-950 text-blue-300 border border-blue-800 px-3 py-1 rounded">LIS Case Study</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-300">
+          <div>
+            <h4 class="font-bold text-white mb-1">Challenge</h4>
+            <p class="text-slate-400 leading-relaxed">
+              Lab technicians were manually re-typing 800+ daily blood chemistry test values from analyzer screens into Word templates, creating transcription error risks and 4-hour reporting delays.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-bold text-white mb-1">Architectural Solution</h4>
+            <p class="text-slate-400 leading-relaxed">
+              Implemented Digikhojindia bi-directional LIS driver interfacing via ASTM serial and TCP/IP protocol. Analyzer reads barcode on blood tube, executes test profile, and automatically pushes numerical results into verified report templates.
+            </p>
+          </div>
+          <div>
+            <h4 class="font-bold text-white mb-1">Operational Result</h4>
+            <p class="text-slate-400 leading-relaxed">
+              Manual data entry reduced to zero. Reports automatically delivered to patients on WhatsApp and SMS within 30 seconds of pathologist digital sign-off.
+            </p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</Layout>

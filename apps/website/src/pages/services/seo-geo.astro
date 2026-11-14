@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { EnquiryForm } from '../../components/EnquiryForm';
+---
+
+<Layout
+  title="SEO & Generative Engine Optimization (GEO) | Digikhojindia"
+  description="Next-generation SEO and Generative Engine Optimization (GEO). Prepare your web content for AI search engines, answer engines, and LLM citations."
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="max-w-3xl mb-16">
+      <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Search Evolution</span>
+      <h1 class="text-4xl font-extrabold text-white tracking-tight mt-2 sm:text-5xl">
+        SEO & Generative Engine Optimization (GEO)
+      </h1>
+      <p class="mt-4 text-base text-slate-300 leading-relaxed">
+        Search has evolved beyond ten blue links. Modern users query AI answer engines (ChatGPT, Google AI Overviews, Perplexity). We optimize your entity authority for next-generation discovery.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <h3 class="text-lg font-bold text-white mb-2">Structured Entity Schemas</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">JSON-LD data graphs: Organization, MedicalBusiness, SoftwareApplication, FAQs, and Breadcrumbs for unambiguous crawler indexing.</p>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <h3 class="text-lg font-bold text-white mb-2">Original Technical Content</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">Expert-authored articles, authoritative guides, and verifiable factual data that search crawlers trust and cite.</p>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <h3 class="text-lg font-bold text-white mb-2">Crawl & Index Health</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">Instant edge delivery, automated sitemaps, robots.txt, canonical checks, and zero broken links.</p>
+      </div>
+    </div>
+
+    <div class="max-w-2xl mx-auto">
+      <h3 class="text-xl font-bold text-white text-center mb-6">Optimize for AI Search Engines</h3>
+      <EnquiryForm client:load defaultType="demo" defaultService="Google Business Profile & SEO Optimization" />
+    </div>
+  </div>
+</Layout>

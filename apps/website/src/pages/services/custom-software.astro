@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { EnquiryForm } from '../../components/EnquiryForm';
+---
+
+<Layout
+  title="Custom Software Development | Digikhojindia Enterprise Engineering"
+  description="Bespoke software engineered for your organization's exact workflows. Cloudflare-native, multi-tenant, and highly secure."
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="max-w-3xl mb-16">
+      <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Enterprise Engineering</span>
+      <h1 class="text-4xl font-extrabold text-white tracking-tight mt-2 sm:text-5xl">
+        Custom Software Development
+      </h1>
+      <p class="mt-4 text-base text-slate-300 leading-relaxed">
+        Off-the-shelf software forces you to change your business processes to fit their limitations. Digikhojindia builds custom systems tailored to your exact business logic.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <h3 class="text-lg font-bold text-white mb-2">Cloudflare-Native Core</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">Deployed on Cloudflare Workers, D1 SQL, and R2 object storage for global resilience and sub-10ms latency.</p>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <h3 class="text-lg font-bold text-white mb-2">Multi-Tenant Isolation</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">Enterprise row-level security ensuring each company or branch has completely isolated data.</p>
+      </div>
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <h3 class="text-lg font-bold text-white mb-2">Full Source Ownership</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">Clean TypeScript codebase, documented REST APIs, and comprehensive test coverage.</p>
+      </div>
+    </div>
+
+    <div class="max-w-2xl mx-auto">
+      <h3 class="text-xl font-bold text-white text-center mb-6">Discuss Your Custom Software Architecture</h3>
+      <EnquiryForm client:load defaultType="quote" defaultService="Custom Software Development" />
+    </div>
+  </div>
+</Layout>

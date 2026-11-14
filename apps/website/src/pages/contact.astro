@@ -1,0 +1,66 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { EnquiryForm } from '../components/EnquiryForm';
+import { BRAND_CONSTANTS } from '@digikhojindia/shared';
+---
+
+<Layout
+  title="Contact Us | Digikhojindia"
+  description="Connect with Digikhojindia for enterprise software engineering, hospital HMIS consultation, and custom business automation."
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Direct Communication</span>
+      <h1 class="text-4xl font-extrabold text-white tracking-tight mt-2 sm:text-5xl">
+        Connect With Our Engineering Team
+      </h1>
+      <p class="mt-4 text-sm text-slate-300">
+        Have a question about our software modules, custom development timeline, or IT infrastructure support? Reach out directly.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div class="lg:col-span-5 space-y-6">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+          <h3 class="text-lg font-bold text-white">Direct Contacts</h3>
+          <div class="space-y-3 text-xs text-slate-300">
+            <div>
+              <p class="text-slate-500">Official Email</p>
+              <a href={`mailto:${BRAND_CONSTANTS.OFFICIAL_EMAIL}`} class="text-blue-400 font-semibold hover:underline">
+                {BRAND_CONSTANTS.OFFICIAL_EMAIL}
+              </a>
+            </div>
+            <div>
+              <p class="text-slate-500">Company Leadership</p>
+              <p class="font-semibold text-white">{BRAND_CONSTANTS.OWNER_NAME} (Founder & Owner)</p>
+            </div>
+            <div>
+              <p class="text-slate-500">Business Hours</p>
+              <p class="font-semibold text-white">Monday – Saturday: 9:00 AM – 7:00 PM IST</p>
+              <p class="text-[11px] text-slate-400">24/7 Critical Emergency SLA for Hospital HMIS Clients</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-blue-950/40 border border-blue-500/30 rounded-2xl p-6">
+          <h4 class="text-sm font-bold text-blue-300 mb-1">Existing Customer with Support Ticket?</h4>
+          <p class="text-xs text-slate-300 mb-4">
+            If your organization has an active deployment, log into our dedicated Customer Portal to raise high-priority complaints and track resolution.
+          </p>
+          <a
+            href="http://localhost:5174"
+            target="_blank"
+            rel="noreferrer"
+            class="inline-block text-xs font-semibold px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors"
+          >
+            Open Customer Support Portal →
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <EnquiryForm client:load defaultType="contact" />
+      </div>
+    </div>
+  </div>
+</Layout>

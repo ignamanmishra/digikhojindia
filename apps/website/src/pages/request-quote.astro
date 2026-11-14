@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { EnquiryForm } from '../components/EnquiryForm';
+---
+
+<Layout
+  title="Request a Turnkey Quotation | Digikhojindia"
+  description="Receive a transparent, itemized quotation for custom software development, HMIS implementation, and IT infrastructure support."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Transparent Pricing</span>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mt-2">
+        Get an Itemized Project Quotation
+      </h1>
+      <p class="mt-4 text-sm text-slate-300">
+        Share your operational scale and required modules. We prepare clear, transparent technical scopes with no hidden fees.
+      </p>
+    </div>
+
+    <EnquiryForm client:load defaultType="quote" />
+  </div>
+</Layout>

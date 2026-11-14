@@ -1,0 +1,80 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { BRAND_CONSTANTS } from '@digikhojindia/shared';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  schema?: Record<string, unknown>;
+}
+
+const {
+  title = `${BRAND_CONSTANTS.COMPANY_NAME} | ${BRAND_CONSTANTS.TAGLINE}`,
+  description = "Digikhojindia provides hospital management software (HMIS), business process automation, custom software development, CRM solutions, and IT infrastructure management.",
+  canonical = Astro.url.href,
+  schema,
+} = Astro.props;
+
+// Base Organization Schema (Section 17 GEO / SEO)
+const defaultOrganizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": BRAND_CONSTANTS.COMPANY_NAME,
+  "founder": {
+    "@type": "Person",
+    "name": BRAND_CONSTANTS.OWNER_NAME,
+  },
+  "email": BRAND_CONSTANTS.OFFICIAL_EMAIL,
+  "slogan": BRAND_CONSTANTS.TAGLINE,
+  "description": description,
+  "knowsAbout": [
+    "Hospital Management Software",
+    "Business Process Automation",
+    "Custom Software Development",
+    "CRM Development",
+    "Local SEO and GEO Optimization"
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonical} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+
+    <!-- Google Structured Data (JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify(defaultOrganizationSchema)} />
+    {schema && (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    )}
+  </head>
+  <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white">
+    <Navbar activePath={Astro.url.pathname} />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { BRAND_CONSTANTS } from '@digikhojindia/shared';
+---
+
+<Layout
+  title={`Privacy Policy | ${BRAND_CONSTANTS.COMPANY_NAME}`}
+  description="Official Privacy Policy for Digikhojindia platform, services, and applications."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="mb-12">
+      <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Data Protection</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-2">Privacy Policy</h1>
+      <p class="mt-2 text-xs text-slate-400">Last updated: November 2026 • Owned by {BRAND_CONSTANTS.OWNER_NAME}</p>
+    </div>
+
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 sm:p-12 space-y-6 text-xs text-slate-300 leading-relaxed">
+      <p>
+        At <strong>{BRAND_CONSTANTS.COMPANY_NAME}</strong>, accessible from our platforms and web applications, customer and patient privacy is our top operational priority. This policy outlines how information is handled.
+      </p>
+
+      <h2 class="text-base font-bold text-white pt-4">1. Multi-Tenant Data Isolation</h2>
+      <p>
+        Every client organization operates within an isolated tenant environment. Records, tickets, and financial data belonging to one hospital or business are cryptographically protected and unreachable by other platform tenants.
+      </p>
+
+      <h2 class="text-base font-bold text-white pt-4">2. Health Data Protection (HMIS Deployments)</h2>
+      <p>
+        In accordance with Section 22 of our security protocols, electronic medical records and clinical test data belong exclusively to the hospital. Digikhojindia never accesses, monetizes, or transfers patient health data.
+      </p>
+
+      <h2 class="text-base font-bold text-white pt-4">3. Cloudflare Security & Encryption</h2>
+      <p>
+        All communications are encrypted in transit using TLS 1.3. Sessions utilize secure, HTTP-only cookie tokens to defend against cross-site scripting (XSS) and injection attacks.
+      </p>
+
+      <h2 class="text-base font-bold text-white pt-4">4. Contact Privacy Officer</h2>
+      <p>
+        For inquiries regarding data protection, email <a href={`mailto:${BRAND_CONSTANTS.OFFICIAL_EMAIL}`} class="text-blue-400 underline">{BRAND_CONSTANTS.OFFICIAL_EMAIL}</a>.
+      </p>
+    </div>
+  </div>
+</Layout>

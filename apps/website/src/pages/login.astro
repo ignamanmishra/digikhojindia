@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Customer & Admin Login | Digikhojindia"
+  description="Sign into the Digikhojindia Customer Support Portal or Internal Operations Panel."
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div class="text-center max-w-xl mx-auto mb-12">
+      <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Secure Access</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-2">
+        Platform Portals Access
+      </h1>
+      <p class="mt-3 text-sm text-slate-300">
+        Choose your authorized dashboard destination below.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- Customer Portal Card -->
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 hover:border-blue-500/50 transition-all flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-blue-600/20 text-blue-400 flex items-center justify-center text-2xl font-bold mb-4">
+            🏢
+          </div>
+          <h2 class="text-2xl font-bold text-white mb-2">Customer Portal</h2>
+          <p class="text-xs text-slate-400 leading-relaxed mb-6">
+            For hospitals, clinics, and businesses running Digikhojindia software. Raise support complaints, track ticket SLAs, view AMC status, and download invoices.
+          </p>
+          <div class="bg-slate-950/60 rounded-xl p-3 border border-slate-800 text-[11px] text-slate-400 space-y-1 mb-6">
+            <p><span class="text-slate-300 font-semibold">Test Client:</span> admin@cityhospital.com</p>
+            <p><span class="text-slate-300 font-semibold">Password:</span> Password123!</p>
+          </div>
+        </div>
+
+        <a
+          href="http://localhost:5174"
+          target="_blank"
+          rel="noreferrer"
+          class="w-full text-center py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs rounded-xl shadow-lg shadow-blue-600/30 transition-all block"
+        >
+          Launch Customer Portal →
+        </a>
+      </div>
+
+      <!-- Admin Cockpit Card -->
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 hover:border-slate-700 transition-all flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-slate-800 text-slate-300 flex items-center justify-center text-2xl font-bold mb-4">
+            ⚙️
+          </div>
+          <h2 class="text-2xl font-bold text-white mb-2">Admin Operations Panel</h2>
+          <p class="text-xs text-slate-400 leading-relaxed mb-6">
+            For Digikhojindia staff, engineers, and executive management. Manage customer accounts, CRM pipelines, support tickets, AMC renewals, and invoicing.
+          </p>
+          <div class="bg-slate-950/60 rounded-xl p-3 border border-slate-800 text-[11px] text-slate-400 space-y-1 mb-6">
+            <p><span class="text-slate-300 font-semibold">Super Admin:</span> info@digikhojindia.com</p>
+            <p><span class="text-slate-300 font-semibold">Password:</span> Password123!</p>
+          </div>
+        </div>
+
+        <a
+          href="http://localhost:5173"
+          target="_blank"
+          rel="noreferrer"
+          class="w-full text-center py-3 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs rounded-xl border border-slate-700 transition-all block"
+        >
+          Launch Admin Operations Panel →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</Layout>
