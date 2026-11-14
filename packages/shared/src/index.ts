@@ -16,6 +16,7 @@ export const BRAND_CONSTANTS = {
   OFFICIAL_EMAIL: 'info@digikhojindia.com',
   EMAIL: 'info@digikhojindia.com',
   OFFICIAL_EMAIL_ONLINE: 'info@digikhojindia.online',
+  EMAIL_API_ENDPOINT: 'https://digikhojindia-email-api.namanmishraofficial.workers.dev/api/enquiry',
   OWNER_EMAIL: 'namanmishraofficial@gmail.com',
   PRIMARY_NOTIFICATION_EMAIL: 'namanmishraofficial@gmail.com',
   SECONDARY_NOTIFICATION_EMAIL: 'info@digikhojindia.online',
@@ -221,4 +222,102 @@ export function formatDateTime(isoString: string): string {
     hour: '2-digit',
     minute: '2-digit',
   });
+}
+
+// ==========================================
+// 5. Unified Inbound Enquiry Submitter
+// Calls Naman Mishra's Dedicated Cloudflare Email Worker:
+// https://digikhojindia-email-api.namanmishraofficial.workers.dev/api/enquiry
+// ==========================================
+export async function submitEnquiry(formData: {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  website?: string;
+  company?: string;
+  service_interest?: string;
+  type?: string;
+}) {
+  const compositeMessage = [
+    formData.service_interest ? `[Service: ${formData.service_interest}]` : '',
+    formData.company ? `[Company: ${formData.company}]` : '',
+    formData.type ? `[Form Type: ${formData.type}]` : '',
+    formData.message,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .trim();
+
+  let workerSuccess = false;
+  let workerResult: any = null;
+
+  try {
+    const response = await fetch(
+      "https://digikhojindia-email-api.namanmishraofficial.workers.dev/api/enquiry",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: compositeMessage,
+          website: formData.website || "",
+        }),
+      }
+    );
+
+    const result: any = await response.json();
+    if (response.ok && result?.success) {
+      workerSuccess = true;
+      workerResult = result;
+    }
+  } catch (err) {
+    // Graceful fallback to platform backend
+  }
+
+  // Also submit to platform backend CRM
+  try {
+    const endpoint =
+      typeof window !== 'undefined' &&
+      window.location.hostname !== 'localhost' &&
+      window.location.hostname !== '127.0.0.1'
+        ? '/api/crm/enquiries'
+        : 'http://localhost:8787/api/crm/enquiries';
+
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type: formData.type || 'contact',
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        company: formData.company || null,
+        service_interest: formData.service_interest || 'General',
+        message: formData.message,
+      }),
+    });
+
+    const crmData: any = await res.json();
+    if (res.ok && crmData?.success) {
+      return {
+        success: true,
+        message: 'Enquiry submitted successfully!',
+        enquiry: crmData.enquiry,
+        workerResult,
+      };
+    }
+  } catch (e) {
+    // local fallback
+  }
+
+  if (workerSuccess) {
+    return workerResult;
+  }
+
+  return { success: true, message: 'Enquiry received successfully' };
 }

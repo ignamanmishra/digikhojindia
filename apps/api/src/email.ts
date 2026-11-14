@@ -170,7 +170,35 @@ export async function sendEnquiryNotification(
   let sendSuccess = true;
   let statusDetail = 'Dispatched to notification queue';
 
-  // 1. Check for Resend API Key
+  // 1. Dispatch to Naman Mishra's Dedicated Cloudflare Email Worker
+  try {
+    const workerRes = await fetch(
+      "https://digikhojindia-email-api.namanmishraofficial.workers.dev/api/enquiry",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Origin": "https://digikhojindia.online",
+        },
+        body: JSON.stringify({
+          name: enquiry.name,
+          email: enquiry.email,
+          phone: enquiry.phone,
+          message: `[${enquiry.type.toUpperCase()}] [Service: ${enquiry.service_interest}] [Company: ${enquiry.company || 'Direct'}] ${enquiry.message}`,
+          website: "",
+        }),
+      }
+    );
+    const workerData: any = await workerRes.json();
+    if (workerRes.ok && workerData?.success) {
+      provider = 'cloudflare_worker';
+      statusDetail = 'Delivered to digikhojindia-email-api worker';
+    }
+  } catch (err: any) {
+    console.warn(`[Email Alert] Dedicated email worker notice: ${err.message}`);
+  }
+
+  // 2. Check for Resend API Key
   const resendApiKey = env?.RESEND_API_KEY || (typeof process !== 'undefined' ? process.env?.RESEND_API_KEY : undefined);
   if (resendApiKey) {
     try {

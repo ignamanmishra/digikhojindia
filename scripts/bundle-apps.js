@@ -27,3 +27,4 @@ if (fs.existsSync(websiteDist)) {
     console.log('✓ Customer Portal bundle merged into website/dist/portal');
   }
 }
+

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { portalRequest } from '../api';
 import { AlertCircle, CheckCircle2, ArrowRight } from 'lucide-react';
+import { submitEnquiry } from '@digikhojindia/shared';
 
 interface PortalRaiseTicketViewProps {
   onSuccess: (ticketId: string) => void;
@@ -47,6 +48,15 @@ export const PortalRaiseTicketView: React.FC<PortalRaiseTicketViewProps> = ({ on
       });
 
       setCreatedTicket(res.ticket);
+
+      // Trigger instant email notification alert
+      submitEnquiry({
+        name: `Customer Complaint (${customerId})`,
+        email: 'support@digikhojindia.online',
+        phone: '+91 89898 28902',
+        message: `[NEW SUPPORT TICKET #${res.ticket?.id || 'PENDING'}] [${formData.priority} Priority] Category: ${formData.category} | Subject: ${formData.subject} | Details: ${formData.description}`,
+        website: '',
+      }).catch(() => {});
     } catch (err: any) {
       setError(err.message || 'Failed to submit complaint. Please check fields.');
     } finally {
