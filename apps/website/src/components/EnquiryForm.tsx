@@ -1,10 +1,11 @@
 /**
- * DIGIKHOJINDIA INTERACTIVE LEAD & ENQUIRY FORM
+ * DIGIKHOJINDIA LIQUID GLASS INTERACTIVE LEAD & ENQUIRY FORM
  * Connects directly to backend API (/api/crm/enquiries)
  * Owner: Naman Mishra
  */
 
 import React, { useState } from 'react';
+import { Send, CheckCircle2, AlertCircle, Sparkles } from 'lucide-react';
 
 interface EnquiryFormProps {
   defaultType?: 'contact' | 'demo' | 'quote';
@@ -14,7 +15,7 @@ interface EnquiryFormProps {
 
 export const EnquiryForm: React.FC<EnquiryFormProps> = ({
   defaultType = 'contact',
-  defaultService = 'Hospital Management Software',
+  defaultService = 'Hospital Management Software (HMIS)',
   className = '',
 }) => {
   const [formData, setFormData] = useState({
@@ -59,173 +60,175 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
       const data = await res.json();
 
       if (!res.ok || !data.success) {
-        throw new Error(data.error || 'Failed to submit enquiry. Please try again.');
+        throw new Error(data.error || 'Unable to submit enquiry. Please try again.');
       }
 
       setStatus('success');
-      setSuccessId(data.enquiry_id);
+      setSuccessId(data.enquiry?.id || 'SUBMITTED');
     } catch (err: any) {
       setStatus('error');
-      setErrorMessage(err.message || 'Submission error. Please email info@digikhojindia.com');
+      setErrorMessage(err.message || 'Network error connecting to API.');
     }
   };
 
   if (status === 'success') {
     return (
-      <div className="bg-emerald-950/40 border border-emerald-500/30 rounded-2xl p-8 text-center text-white">
-        <div className="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
-          ✓
+      <div className={`p-8 rounded-2xl bg-[#080D20]/90 backdrop-blur-2xl border border-emerald-500/40 shadow-[0_0_40px_rgba(16,185,129,0.25)] text-center space-y-4 ${className}`}>
+        <div className="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mx-auto shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+          <CheckCircle2 size={32} />
         </div>
-        <h3 className="text-xl font-bold text-emerald-400 mb-2">Thank You for Connecting!</h3>
-        <p className="text-sm text-slate-300 max-w-md mx-auto mb-4">
-          Your enquiry has been received by our technical solutions team (Ref: <span className="font-mono text-emerald-300 font-bold">{successId}</span>).
-          A senior engineer will connect with you within 2-4 business hours.
+        <h3 className="text-xl font-black text-white font-heading">Enquiry Received Successfully!</h3>
+        <p className="text-xs text-slate-300 max-w-md mx-auto leading-relaxed">
+          Thank you for reaching out to <strong>Digikhojindia</strong>. Our technical architecture team will review your requirements and contact you within 2 business hours.
         </p>
-        <button
-          onClick={() => {
-            setStatus('idle');
-            setFormData({
-              type: defaultType,
-              name: '',
-              email: '',
-              phone: '',
-              company: '',
-              service_interest: defaultService,
-              message: '',
-            });
-          }}
-          className="text-xs font-semibold px-4 py-2 bg-emerald-600 hover:bg-emerald-500 rounded-lg transition-colors text-white"
-        >
-          Submit Another Request
-        </button>
+        <div className="p-3 bg-white/5 border border-white/10 rounded-xl inline-block text-xs font-mono text-cyan-300">
+          Enquiry Tracking Ref: <strong>{successId}</strong>
+        </div>
+        <div>
+          <button
+            onClick={() => {
+              setStatus('idle');
+              setFormData({ ...formData, message: '' });
+            }}
+            className="text-xs text-cyan-400 hover:text-white underline font-semibold mt-2"
+          >
+            Submit Another Request
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className={`bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-8 text-white shadow-xl ${className}`}>
-      
-      {/* Type Toggle */}
-      <div className="flex rounded-lg bg-slate-800/80 p-1 mb-6">
-        <button
-          type="button"
-          onClick={() => setFormData({ ...formData, type: 'demo' })}
-          className={`flex-1 py-1.5 text-xs font-semibold rounded-md transition-all ${
-            formData.type === 'demo' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-400 hover:text-white'
-          }`}
-        >
-          Request Demo
-        </button>
-        <button
-          type="button"
-          onClick={() => setFormData({ ...formData, type: 'quote' })}
-          className={`flex-1 py-1.5 text-xs font-semibold rounded-md transition-all ${
-            formData.type === 'quote' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-400 hover:text-white'
-          }`}
-        >
-          Get Quote
-        </button>
-        <button
-          type="button"
-          onClick={() => setFormData({ ...formData, type: 'contact' })}
-          className={`flex-1 py-1.5 text-xs font-semibold rounded-md transition-all ${
-            formData.type === 'contact' ? 'bg-blue-600 text-white shadow-sm' : 'text-slate-400 hover:text-white'
-          }`}
-        >
-          General Contact
-        </button>
+    <form
+      onSubmit={handleSubmit}
+      className={`relative p-8 rounded-3xl bg-gradient-to-b from-[#102B50]/50 to-[#080D20]/80 backdrop-blur-2xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.5),0_0_30px_rgba(66,221,245,0.15)] space-y-5 overflow-hidden ${className}`}
+    >
+      {/* Top subtle reflection shine */}
+      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent pointer-events-none" />
+
+      {/* Type Selector Tabs */}
+      <div className="flex p-1 rounded-xl bg-white/[0.04] border border-white/10 backdrop-blur-md">
+        {(['demo', 'quote', 'contact'] as const).map((t) => (
+          <button
+            key={t}
+            type="button"
+            onClick={() => setFormData({ ...formData, type: t })}
+            className={`flex-1 py-2 text-xs font-bold rounded-lg capitalize select-none transition-all duration-200 ${
+              formData.type === t
+                ? 'bg-gradient-to-r from-[#287BFF] via-[#42DDF5] to-[#9B70FF] text-white shadow-[0_0_15px_rgba(66,221,245,0.4)]'
+                : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            {t === 'demo' ? 'Request Demo' : t === 'quote' ? 'Request Quote' : 'General Contact'}
+          </button>
+        ))}
       </div>
+
+      {status === 'error' && (
+        <div className="p-3.5 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
+          <AlertCircle size={16} className="shrink-0" />
+          <span>{errorMessage}</span>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-medium text-slate-300 mb-1">Your Full Name *</label>
+          <label className="block text-xs font-semibold text-slate-300 mb-1.5">Your Full Name *</label>
           <input
             type="text"
             required
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            placeholder="e.g. Dr. Ramesh Sharma"
-            className="w-full px-3.5 py-2 text-sm bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+            placeholder="Dr. Rajesh / Amit Kumar"
+            className="w-full bg-[#080D20]/60 backdrop-blur-md border border-white/10 hover:border-cyan-400/40 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)]"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-slate-300 mb-1">Official Email Address *</label>
+          <label className="block text-xs font-semibold text-slate-300 mb-1.5">Official Email *</label>
           <input
             type="email"
             required
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            placeholder="e.g. admin@cityhospital.com"
-            className="w-full px-3.5 py-2 text-sm bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+            placeholder="name@organization.com"
+            className="w-full bg-[#080D20]/60 backdrop-blur-md border border-white/10 hover:border-cyan-400/40 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)]"
           />
         </div>
+      </div>
 
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-medium text-slate-300 mb-1">Phone / WhatsApp Number *</label>
+          <label className="block text-xs font-semibold text-slate-300 mb-1.5">Phone / WhatsApp Number *</label>
           <input
             type="tel"
             required
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             placeholder="+91 98765 43210"
-            className="w-full px-3.5 py-2 text-sm bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+            className="w-full bg-[#080D20]/60 backdrop-blur-md border border-white/10 hover:border-cyan-400/40 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)]"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-slate-300 mb-1">Hospital / Organization Name</label>
+          <label className="block text-xs font-semibold text-slate-300 mb-1.5">Company / Hospital Name</label>
           <input
             type="text"
             value={formData.company}
             onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-            placeholder="e.g. City Care Multi-Speciality Hospital"
-            className="w-full px-3.5 py-2 text-sm bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+            placeholder="e.g. Metro Care Hospital"
+            className="w-full bg-[#080D20]/60 backdrop-blur-md border border-white/10 hover:border-cyan-400/40 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)]"
           />
         </div>
       </div>
 
-      <div className="mt-4">
-        <label className="block text-xs font-medium text-slate-300 mb-1">Primary Software or Service of Interest *</label>
+      <div>
+        <label className="block text-xs font-semibold text-slate-300 mb-1.5">Area of Interest / Service</label>
         <select
           value={formData.service_interest}
           onChange={(e) => setFormData({ ...formData, service_interest: e.target.value })}
-          className="w-full px-3.5 py-2 text-sm bg-slate-800 border border-slate-700 rounded-lg text-white focus:outline-none focus:border-blue-500"
+          className="w-full bg-[#080D20]/90 backdrop-blur-md border border-white/10 hover:border-cyan-400/40 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)]"
         >
-          {services.map((s) => (
-            <option key={s} value={s}>{s}</option>
+          {services.map((s, idx) => (
+            <option key={idx} value={s} className="bg-slate-900 text-white">
+              {s}
+            </option>
           ))}
         </select>
       </div>
 
-      <div className="mt-4">
-        <label className="block text-xs font-medium text-slate-300 mb-1">Requirement Details / Message *</label>
+      <div>
+        <label className="block text-xs font-semibold text-slate-300 mb-1.5">Operational Details & Scope *</label>
         <textarea
           rows={3}
           required
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          placeholder="Briefly describe your requirements, bed capacity, daily footfall, or specific workflows you want to automate..."
-          className="w-full px-3.5 py-2 text-sm bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
-        />
+          placeholder="Describe your bed capacity, clinic workflow, or custom software requirements..."
+          className="w-full bg-[#080D20]/60 backdrop-blur-md border border-white/10 hover:border-cyan-400/40 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 rounded-xl p-3.5 text-xs text-white placeholder-slate-500 focus:outline-none transition-all shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)]"
+        ></textarea>
       </div>
-
-      {status === 'error' && (
-        <div className="mt-4 p-3 bg-red-900/40 border border-red-500/40 rounded-lg text-xs text-red-300">
-          {errorMessage}
-        </div>
-      )}
 
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="w-full mt-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm rounded-lg shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-2 disabled:opacity-60"
+        className="w-full relative group py-3.5 rounded-xl font-bold text-xs text-white bg-gradient-to-r from-[#287BFF] via-[#42DDF5] to-[#9B70FF] shadow-[0_0_25px_rgba(66,221,245,0.4)] hover:shadow-[0_0_35px_rgba(40,123,255,0.6)] border border-white/20 transition-all transform hover:scale-[1.01] flex items-center justify-center gap-2 disabled:opacity-50 overflow-hidden"
       >
-        {status === 'submitting' ? 'Submitting...' : 'Send Request to Technical Team →'}
+        <span className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+        {status === 'submitting' ? (
+          <span>Transmitting Request to Architects...</span>
+        ) : (
+          <>
+            <Sparkles size={16} />
+            <span>Submit Request to Technical Leadership</span>
+            <Send size={14} className="transition-transform group-hover:translate-x-1" />
+          </>
+        )}
       </button>
 
-      <p className="mt-3 text-[11px] text-center text-slate-400">
-        Protected by Cloudflare Edge Security. We respect your privacy.
+      <p className="text-[10px] text-center text-slate-400">
+        Strict privacy guaranteed. Lifetime Free AMC applies to eligible custom software contracts.
       </p>
     </form>
   );

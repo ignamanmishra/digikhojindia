@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { apiRequest, setAuthToken } from '../api';
 import { BRAND_CONSTANTS } from '@digikhojindia/shared';
-import { Lock, Mail, ArrowRight } from 'lucide-react';
+import { Lock, Mail, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
+import { BrandLogo, GlassButton, GlassInput } from '@digikhojindia/ui';
 
 interface LoginViewProps {
   onLoginSuccess: (user: any) => void;
 }
 
 export const LoginView: React.FC<LoginViewProps> = ({ onLoginSuccess }) => {
-  const [email, setEmail] = useState('info@digikhojindia.com');
-  const [password, setPassword] = useState('Password123!');
+  const [email, setEmail] = useState('admin@digikhojindia.com');
+  const [password, setPassword] = useState('SuperAdmin@2026!');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -33,97 +34,132 @@ export const LoginView: React.FC<LoginViewProps> = ({ onLoginSuccess }) => {
     }
   };
 
+  const setFastCredentials = (demoEmail: string, demoPass: string) => {
+    setEmail(demoEmail);
+    setPassword(demoPass);
+  };
+
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col justify-center items-center p-4">
-      <div className="max-w-md w-full bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl text-white">
-        
-        {/* Brand Header */}
-        <div className="text-center mb-8">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-sky-400 flex items-center justify-center text-white font-black text-2xl mx-auto mb-3 shadow-lg shadow-blue-500/20">
-            D
-          </div>
-          <h1 className="text-2xl font-bold tracking-tight text-white">{BRAND_CONSTANTS.COMPANY_NAME}</h1>
-          <p className="text-xs text-blue-400 font-semibold uppercase tracking-wider mt-1">Enterprise Admin Cockpit</p>
-          <p className="text-[11px] text-slate-400 mt-2">Owner: {BRAND_CONSTANTS.OWNER_NAME}</p>
-        </div>
-
-        {error && (
-          <div className="mb-4 p-3 bg-red-900/40 border border-red-500/40 rounded-xl text-xs text-red-300 text-center">
-            {error}
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} className="space-y-4 text-xs">
-          <div>
-            <label className="block text-slate-300 font-semibold mb-1">Administrative Email</label>
-            <div className="relative">
-              <Mail size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full pl-9 pr-3 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-slate-300 font-semibold mb-1">Secure Password</label>
-            <div className="relative">
-              <Lock size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-              <input
-                type="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-9 pr-3 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-mono"
-              />
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center gap-2 disabled:opacity-60 text-xs mt-2"
-          >
-            {loading ? 'Authenticating...' : 'Sign In to Operations Cockpit'}
-            <ArrowRight size={14} />
-          </button>
-        </form>
-
-        {/* Quick Credentials Picker */}
-        <div className="mt-8 pt-6 border-t border-slate-800 text-[11px] text-slate-400 space-y-2">
-          <p className="font-semibold text-slate-300">Quick Demo Accounts (Pre-configured):</p>
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              onClick={() => {
-                setEmail('info@digikhojindia.com');
-                setPassword('Password123!');
-              }}
-              className="p-2 bg-slate-800/80 hover:bg-slate-800 text-left rounded-lg border border-slate-700 text-slate-300"
-            >
-              <strong className="block text-white">Super Admin</strong>
-              <span>info@digikhojindia.com</span>
-            </button>
-            <button
-              onClick={() => {
-                setEmail('support@digikhojindia.com');
-                setPassword('Password123!');
-              }}
-              className="p-2 bg-slate-800/80 hover:bg-slate-800 text-left rounded-lg border border-slate-700 text-slate-300"
-            >
-              <strong className="block text-white">Support Lead</strong>
-              <span>support@digikhojindia.com</span>
-            </button>
-          </div>
-        </div>
-
-        <p className="mt-6 text-[10px] text-center text-slate-500">
-          {BRAND_CONSTANTS.FOOTER_COPYRIGHT} {BRAND_CONSTANTS.FOOTER_OWNERSHIP}
-        </p>
-
+    <div className="min-h-screen bg-[#080D20] text-slate-100 flex flex-col justify-between p-4 relative overflow-hidden">
+      {/* Ambient Animated Blurred Lights */}
+      <div className="fixed inset-0 pointer-events-none -z-10">
+        <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-[#287BFF]/20 via-[#42DDF5]/15 to-transparent blur-[120px] animate-pulse-slow" />
+        <div className="absolute bottom-[10%] right-[20%] w-[500px] h-[500px] rounded-full bg-gradient-to-bl from-[#9B70FF]/25 via-[#F078C8]/15 to-transparent blur-[120px] animate-pulse-slow" />
       </div>
+
+      <div className="max-w-md w-full mx-auto my-auto py-8">
+        {/* Brand Header with Official Emblem */}
+        <div className="text-center mb-8 space-y-3">
+          <BrandLogo size="lg" variant="full" glow={true} className="justify-center" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] backdrop-blur-md border border-cyan-400/30 text-cyan-300 text-[11px] font-semibold uppercase tracking-wider">
+            <Sparkles size={12} className="text-cyan-400" />
+            <span>Enterprise Admin Cockpit</span>
+          </div>
+          <p className="text-xs text-slate-400">
+            Sign in to access platform operations, customer CRM, and cloud telemetry
+          </p>
+        </div>
+
+        {/* Demo Fast Login Pills */}
+        <div className="p-3.5 rounded-2xl bg-white/[0.03] backdrop-blur-xl border border-white/10 mb-6 text-xs space-y-2">
+          <div className="flex items-center justify-between text-slate-300">
+            <span className="font-bold flex items-center gap-1.5 text-[11px] uppercase tracking-wider text-cyan-300 font-heading">
+              <ShieldCheck size={14} className="text-cyan-400" /> Demo Admin Access
+            </span>
+            <span className="text-[10px] text-slate-400 font-mono">100k PBKDF2 Secure</span>
+          </div>
+          <div className="grid grid-cols-2 gap-2 pt-1">
+            <button
+              type="button"
+              onClick={() => setFastCredentials('admin@digikhojindia.com', 'SuperAdmin@2026!')}
+              className={`p-2 rounded-xl text-left border transition-all ${
+                email === 'admin@digikhojindia.com'
+                  ? 'bg-blue-600/25 border-cyan-400 text-cyan-200'
+                  : 'bg-white/[0.03] border-white/10 text-slate-300 hover:border-white/20'
+              }`}
+            >
+              <span className="font-bold block text-[11px] truncate">Super Admin</span>
+              <span className="text-[10px] text-slate-400 block truncate">admin@digikhojindia...</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setFastCredentials('info@digikhojindia.com', 'Password123!')}
+              className={`p-2 rounded-xl text-left border transition-all ${
+                email === 'info@digikhojindia.com'
+                  ? 'bg-blue-600/25 border-cyan-400 text-cyan-200'
+                  : 'bg-white/[0.03] border-white/10 text-slate-300 hover:border-white/20'
+              }`}
+            >
+              <span className="font-bold block text-[11px] truncate">Staff Lead</span>
+              <span className="text-[10px] text-slate-400 block truncate">info@digikhojindia...</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Liquid Glass Login Dialog */}
+        <div className="relative rounded-3xl p-8 bg-gradient-to-b from-[#102B50]/60 to-[#080D20]/80 backdrop-blur-2xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.6),0_0_30px_rgba(66,221,245,0.15)] overflow-hidden">
+          <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent pointer-events-none" />
+
+          {error && (
+            <div className="p-3.5 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs mb-5 flex items-center gap-2">
+              <span>•</span>
+              <span>{error}</span>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <GlassInput
+              label="Staff Email Address"
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="admin@digikhojindia.com"
+              iconPrefix={<Mail size={16} />}
+            />
+
+            <GlassInput
+              label="System Password"
+              type="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••••••"
+              iconPrefix={<Lock size={16} />}
+            />
+
+            <div className="pt-2">
+              <GlassButton
+                type="submit"
+                variant="primary"
+                size="md"
+                className="w-full"
+                isLoading={loading}
+              >
+                <span>Authorize & Enter Cockpit</span>
+                <ArrowRight size={15} />
+              </GlassButton>
+            </div>
+          </form>
+
+          <div className="mt-6 pt-4 border-t border-white/10 text-center">
+            <p className="text-[11px] text-slate-400">
+              Need technical access? Contact{' '}
+              <a href={`mailto:${BRAND_CONSTANTS.OFFICIAL_EMAIL}`} className="text-cyan-400 hover:underline">
+                {BRAND_CONSTANTS.OFFICIAL_EMAIL}
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Mandatory Brand Ownership Footer */}
+      <footer className="text-center py-4 border-t border-white/10 text-xs text-slate-400 space-y-0.5">
+        <p>© Digikhojindia. All Rights Reserved. Owned by Naman Mishra.</p>
+        <p className="text-[11px] text-slate-500 italic">
+          "Technology की हर नई खोज, आपके लिए!"
+        </p>
+      </footer>
     </div>
   );
 };

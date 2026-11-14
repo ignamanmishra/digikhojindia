@@ -2,7 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --midnight: #080D20;
+  --deep-ocean: #102B50;
+  --electric-blue: #287BFF;
+  --liquid-cyan: #42DDF5;
+  --luminous-violet: #9B70FF;
+  --aurora-pink: #F078C8;
+  --emerald: #10B981;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #080D20;
+}
+
+.font-heading {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Custom Liquid Glass Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080D20;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #287BFF 0%, #42DDF5 50%, #9B70FF 100%);
+  border-radius: 9999px;
+  border: 1px solid #080D20;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #42DDF5 0%, #9B70FF 50%, #F078C8 100%);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+/* Liquid Glass Surface Utilities */
+.liquid-glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(16, 43, 80, 0.4) 50%, rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+}
+
+.liquid-glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(16, 43, 80, 0.25) 50%, rgba(255, 255, 255, 0.02) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-card:hover {
+  border-color: rgba(66, 221, 245, 0.4);
+  box-shadow: 0 12px 40px 0 rgba(40, 123, 255, 0.25), inset 0 0 20px rgba(66, 221, 245, 0.08);
 }

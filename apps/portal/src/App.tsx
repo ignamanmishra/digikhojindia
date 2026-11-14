@@ -13,6 +13,7 @@ import { PortalDocumentsView } from './views/PortalDocumentsView';
 import { PortalProfileView } from './views/PortalProfileView';
 import { PortalLoginView } from './views/PortalLoginView';
 import { getPortalToken, removePortalToken } from './api';
+import { ThemeProvider } from '@digikhojindia/ui';
 
 export function App() {
   const [user, setUser] = useState<any>(() => {
@@ -60,7 +61,11 @@ export function App() {
   };
 
   if (!user) {
-    return <PortalLoginView onLoginSuccess={handleLoginSuccess} />;
+    return (
+      <ThemeProvider>
+        <PortalLoginView onLoginSuccess={handleLoginSuccess} />
+      </ThemeProvider>
+    );
   }
 
   const renderActiveView = () => {
@@ -106,40 +111,51 @@ export function App() {
   };
 
   return (
-    <div className="flex h-screen bg-slate-950 text-slate-100 overflow-hidden font-sans">
-      {/* Sidebar Navigation */}
-      <PortalSidebar
-        currentTab={currentTab}
-        setCurrentTab={setCurrentTab}
-        collapsed={collapsed}
-        setCollapsed={setCollapsed}
-        onLogout={handleLogout}
-        orgName={user.organization_name || 'Customer Organization'}
-        userName={user.name}
-      />
+    <ThemeProvider>
+      <div className="flex h-screen bg-[#080D20] text-slate-100 overflow-hidden font-sans relative">
+        {/* Ambient Fluid Background Lights */}
+        <div className="fixed inset-0 pointer-events-none -z-10">
+          <div className="absolute -top-[10%] left-[25%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-[#287BFF]/15 via-[#42DDF5]/10 to-transparent blur-[140px] animate-pulse-slow" />
+          <div className="absolute top-[35%] -right-[10%] w-[600px] h-[600px] rounded-full bg-gradient-to-bl from-[#9B70FF]/15 via-[#F078C8]/10 to-transparent blur-[140px] animate-pulse-slow" />
+          <div className="absolute -bottom-[15%] left-[10%] w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-[#102B50]/30 via-[#10B981]/10 to-transparent blur-[140px]" />
+        </div>
 
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        <PortalHeader
+        {/* Sidebar Navigation */}
+        <PortalSidebar
           currentTab={currentTab}
+          setCurrentTab={setCurrentTab}
+          collapsed={collapsed}
+          setCollapsed={setCollapsed}
+          onLogout={handleLogout}
           orgName={user.organization_name || 'Customer Organization'}
-          customerId={user.customer_id || 'DKI-100001'}
-          onRaiseTicket={() => setCurrentTab('raise-ticket')}
+          userName={user.name}
         />
 
-        <main className="flex-1 overflow-y-auto p-6 bg-slate-950/95 space-y-6">
-          {renderActiveView()}
+        {/* Main Content Area */}
+        <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+          <PortalHeader
+            currentTab={currentTab}
+            orgName={user.organization_name || 'Customer Organization'}
+            customerId={user.customer_id || 'DKI-100001'}
+            onRaiseTicket={() => setCurrentTab('raise-ticket')}
+          />
 
-          {/* Mandatory Brand Footer */}
-          <footer className="pt-8 pb-4 border-t border-slate-900 text-center text-xs text-slate-500">
-            <p>© Digikhojindia. All Rights Reserved. Owned by Naman Mishra.</p>
-            <p className="text-[11px] text-slate-600 mt-0.5">
-              "We Don't Just Build Software. We Automate Your Entire Business."
-            </p>
-          </footer>
-        </main>
+          <main className="flex-1 overflow-y-auto p-6 custom-scrollbar space-y-6">
+            <div className="max-w-7xl mx-auto space-y-6">
+              {renderActiveView()}
+            </div>
+
+            {/* Mandatory Brand Footer */}
+            <footer className="pt-8 pb-4 border-t border-white/10 text-center text-xs text-slate-500 space-y-0.5">
+              <p>© Digikhojindia. All Rights Reserved. Owned by Naman Mishra.</p>
+              <p className="text-[11px] text-slate-600 italic">
+                "Technology की हर नई खोज, आपके लिए!"
+              </p>
+            </footer>
+          </main>
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 export default App;

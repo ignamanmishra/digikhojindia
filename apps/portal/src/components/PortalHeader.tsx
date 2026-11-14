@@ -1,5 +1,6 @@
 import React from 'react';
-import { ShieldCheck, PhoneCall, PlusCircle } from 'lucide-react';
+import { ShieldCheck, PhoneCall, PlusCircle, Sparkles } from 'lucide-react';
+import { ThemeToggle } from '@digikhojindia/ui';
 
 interface PortalHeaderProps {
   currentTab: string;
@@ -18,7 +19,7 @@ export const PortalHeader: React.FC<PortalHeaderProps> = ({
     dashboard: 'Client Overview',
     company: 'Organization Profile & Facilities',
     software: 'Active Software Modules',
-    projects: 'Deployment Projects & Progress',
+    projects: 'Deployment Projects & Sprints',
     'raise-ticket': 'Raise Technical Complaint',
     tickets: 'Support Tickets & History',
     amc: 'Annual Maintenance Contract (AMC)',
@@ -28,28 +29,38 @@ export const PortalHeader: React.FC<PortalHeaderProps> = ({
   };
 
   return (
-    <header className="h-16 bg-slate-900 border-b border-slate-800 px-6 flex items-center justify-between shrink-0">
+    <header className="h-16 bg-[#080D20]/80 backdrop-blur-2xl border-b border-white/10 px-6 flex items-center justify-between shrink-0 z-20 shadow-[0_4px_30px_rgba(0,0,0,0.3)]">
       <div>
-        <h1 className="text-base font-bold text-white">{titles[currentTab] || 'Customer Portal'}</h1>
+        <h1 className="text-base font-bold text-white font-heading tracking-tight">
+          {titles[currentTab] || 'Customer Portal'}
+        </h1>
         <p className="text-[11px] text-slate-400">
-          Organization: <strong className="text-slate-200">{orgName}</strong> ({customerId})
+          Organization: <strong className="text-cyan-300 font-medium">{orgName}</strong> ({customerId})
         </p>
       </div>
 
       <div className="flex items-center gap-3">
+        {/* Raise Complaint Action */}
         <button
           onClick={onRaiseTicket}
-          className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-sm transition-all"
+          className="relative group hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-[#287BFF] via-[#42DDF5] to-[#9B70FF] shadow-[0_0_20px_rgba(66,221,245,0.35)] hover:shadow-[0_0_30px_rgba(40,123,255,0.5)] border border-white/20 transition-all transform hover:scale-[1.02] overflow-hidden"
         >
-          <PlusCircle size={14} /> Raise Complaint
+          <span className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
+          <PlusCircle size={14} />
+          <span>Raise Complaint</span>
         </button>
 
-        <div className="hidden md:flex items-center gap-2 text-xs text-slate-300 bg-slate-950/60 border border-slate-800 px-3 py-1.5 rounded-xl">
-          <PhoneCall size={13} className="text-blue-400" />
-          <span>Priority Tech Desk: <strong className="text-white">+91 9876543212</strong></span>
+        {/* Priority Phone Helpline */}
+        <div className="hidden md:flex items-center gap-2 text-xs text-slate-300 bg-white/[0.04] backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-xl shadow-sm">
+          <PhoneCall size={13} className="text-cyan-400" />
+          <span>Priority Tech Desk: <strong className="text-white">+91 99999 99999</strong></span>
         </div>
 
-        <div className="flex items-center gap-1.5 text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-xl">
+        {/* Theme Toggle */}
+        <ThemeToggle />
+
+        {/* Tenant Isolated Shield */}
+        <div className="flex items-center gap-1.5 text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/25 px-3 py-1 rounded-xl backdrop-blur-md shadow-[0_0_15px_rgba(16,185,129,0.2)]">
           <ShieldCheck size={14} className="text-emerald-400" />
           <span>Tenant Isolated</span>
         </div>

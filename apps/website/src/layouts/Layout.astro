@@ -40,11 +40,12 @@ const defaultOrganizationSchema = {
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
     
     <!-- Primary Meta Tags -->
     <title>{title}</title>
@@ -52,25 +53,114 @@ const defaultOrganizationSchema = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
 
+    <!-- Google Fonts: Space Grotesk (Headings), Inter (Body), JetBrains Mono (Technical) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content="/logo.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonical} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content="/logo.png" />
 
     <!-- Google Structured Data (JSON-LD) -->
     <script type="application/ld+json" set:html={JSON.stringify(defaultOrganizationSchema)} />
     {schema && (
       <script type="application/ld+json" set:html={JSON.stringify(schema)} />
     )}
+
+    <!-- Global Liquid Glass Scrollbar & Ambient Styles -->
+    <style is:global>
+      :root {
+        --midnight: #080D20;
+        --deep-ocean: #102B50;
+        --electric-blue: #287BFF;
+        --liquid-cyan: #42DDF5;
+        --luminous-violet: #9B70FF;
+        --aurora-pink: #F078C8;
+        --emerald: #10B981;
+      }
+
+      /* Custom Liquid Glass Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #080D20;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #287BFF 0%, #42DDF5 50%, #9B70FF 100%);
+        border-radius: 9999px;
+        border: 2px solid #080D20;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #42DDF5 0%, #9B70FF 50%, #F078C8 100%);
+      }
+
+      .font-heading {
+        font-family: 'Space Grotesk', sans-serif;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      code, kbd, pre, .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+
+      /* Liquid Glass Utility Surfaces */
+      .glass-surface {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(16, 43, 80, 0.35) 50%, rgba(255, 255, 255, 0.02) 100%);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+      }
+
+      .glass-surface-hover:hover {
+        border-color: rgba(66, 221, 245, 0.4);
+        box-shadow: 0 12px 40px 0 rgba(40, 123, 255, 0.25), inset 0 0 20px rgba(66, 221, 245, 0.08);
+      }
+
+      .text-gradient-liquid {
+        background: linear-gradient(135deg, #287BFF 0%, #42DDF5 50%, #9B70FF 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .text-gradient-aurora {
+        background: linear-gradient(135deg, #F078C8 0%, #9B70FF 50%, #42DDF5 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .text-gradient-saffron {
+        background: linear-gradient(135deg, #FB923C 0%, #F59E0B 50%, #EA580C 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    </style>
   </head>
-  <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-blue-600 selection:text-white">
+  <body class="bg-[#080D20] text-slate-100 antialiased selection:bg-cyan-500 selection:text-black min-h-screen relative overflow-x-hidden">
+    <!-- Ambient Animated Background Fluid Mesh (ColorOS Liquid Glass Lighting) -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+      <div class="absolute -top-[20%] -left-[10%] w-[600px] h-[600px] rounded-full bg-gradient-to-br from-[#287BFF]/25 via-[#42DDF5]/15 to-transparent blur-[120px] animate-pulse-slow"></div>
+      <div class="absolute top-[30%] -right-[15%] w-[650px] h-[650px] rounded-full bg-gradient-to-bl from-[#9B70FF]/25 via-[#F078C8]/15 to-transparent blur-[130px] animate-pulse-slow"></div>
+      <div class="absolute -bottom-[20%] left-[25%] w-[700px] h-[700px] rounded-full bg-gradient-to-tr from-[#102B50]/40 via-[#10B981]/15 to-transparent blur-[140px]"></div>
+    </div>
+
     <Navbar activePath={Astro.url.pathname} />
     <main>
       <slot />
