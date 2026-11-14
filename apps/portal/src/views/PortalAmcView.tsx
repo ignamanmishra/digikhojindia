@@ -53,9 +53,12 @@ export const PortalAmcView: React.FC = () => {
           </div>
           <div className="shrink-0 bg-slate-900/80 border border-slate-700/60 rounded-xl p-3 text-center">
             <p className="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Dedicated Helpline</p>
-            <p className="text-sm font-bold text-emerald-400 mt-0.5 flex items-center justify-center gap-1.5">
-              <PhoneCall size={14} /> +91 99999 99999
-            </p>
+            <a
+              href="tel:+918989828902"
+              className="text-sm font-bold text-emerald-400 hover:text-emerald-300 mt-0.5 flex items-center justify-center gap-1.5 transition-colors"
+            >
+              <PhoneCall size={14} /> +91 89898 28902
+            </a>
             <p className="text-[10px] text-slate-500 mt-1">24x7 Priority Support</p>
           </div>
         </div>
@@ -173,3 +176,4 @@ export const PortalAmcView: React.FC = () => {
     </div>
   );
 };
+

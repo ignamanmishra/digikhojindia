@@ -270,6 +270,10 @@ describe('Digikhojindia Platform API Suite', () => {
       expect(res.status).toBe(201);
       const json = await res.json();
       expect(json.success).toBe(true);
+      expect(json.notification).toBeDefined();
+      expect(json.notification.sent).toBe(true);
+      expect(json.notification.recipients).toContain('namanmishraofficial@gmail.com');
+      expect(json.notification.recipients).toContain('info@digikhojindia.online');
 
       // Verify that CRM lead was created
       const rAdmin = await app.request('/api/auth/login', {
@@ -336,3 +340,4 @@ describe('Digikhojindia Platform API Suite', () => {
     });
   });
 });
+

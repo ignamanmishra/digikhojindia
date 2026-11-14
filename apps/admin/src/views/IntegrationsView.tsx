@@ -85,3 +85,4 @@ export const IntegrationsView: React.FC = () => {
     </div>
   );
 };
+

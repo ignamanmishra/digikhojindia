@@ -281,3 +281,4 @@ export const TicketsView: React.FC = () => {
     </div>
   );
 };
+

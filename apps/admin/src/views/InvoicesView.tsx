@@ -353,3 +353,4 @@ export const InvoicesView: React.FC = () => {
     </div>
   );
 };
+

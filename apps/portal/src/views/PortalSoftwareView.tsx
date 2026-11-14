@@ -60,3 +60,4 @@ export const PortalSoftwareView: React.FC<{ customerId: string }> = ({ customerI
     </div>
   );
 };
+

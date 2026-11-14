@@ -77,3 +77,4 @@ integrationRoutes.post('/:provider/test', requirePermission('settings:write'), a
 
   return c.json({ success: true, message: `Connected and tested successfully with ${target.name}` });
 });
+

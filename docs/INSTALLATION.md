@@ -127,3 +127,4 @@ pnpm test:coverage
 2. **Public Website:** Navigate to [http://localhost:4321](http://localhost:4321) to confirm the 29-page Astro website loads with interactive lead forms.
 3. **Admin Cockpit:** Open [http://localhost:5173](http://localhost:5173) and sign in using `admin@digikhojindia.com` / `SuperAdmin@2026!`.
 4. **Customer Portal:** Open [http://localhost:5174](http://localhost:5174) and sign in using `rajesh@cityhospital.com` / `Customer@12345`.
+

@@ -129,3 +129,4 @@ Converted to Customer (Customer ID: DKI-100001, Tenant ID: tenant-xxx)
    - Cloudflare Turnstile token validation on public enquiry forms and customer registration points.
 4. **Audit Trail:**
    - Every state change (lead creation, ticket reassignment, payment recording, AMC status update) records an audit log entry with `user_id`, `action`, `entity_type`, `entity_id`, and `timestamp`.
+

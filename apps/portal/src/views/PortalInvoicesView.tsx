@@ -268,3 +268,4 @@ export const PortalInvoicesView: React.FC = () => {
     </div>
   );
 };
+

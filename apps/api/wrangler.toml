@@ -27,3 +27,4 @@ bucket_name = "digikhojindia-assets"
 name = "digikhojindia-api-dev"
 [env.development.vars]
 ENVIRONMENT = "development"
+

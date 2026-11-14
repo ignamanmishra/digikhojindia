@@ -572,3 +572,4 @@ export interface SystemSetting {
   description: string;
   updated_at: string;
 }
+

@@ -562,3 +562,4 @@ CREATE TABLE IF NOT EXISTS system_settings (
   description TEXT,
   updated_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
+

@@ -121,3 +121,4 @@ cmsRoutes.post('/videos', authMiddleware, requirePermission('cms:write'), async 
     return c.json({ success: false, error: err.message }, 500);
   }
 });
+

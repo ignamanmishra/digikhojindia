@@ -9,6 +9,7 @@ import { enquiryCreateSchema, leadCreateSchema, leadUpdateSchema } from '@digikh
 import { authMiddleware, type Env, type Variables } from '../middleware/auth';
 import { requirePermission } from '../middleware/rbac';
 import type { Lead, WebsiteEnquiry } from '@digikhojindia/types';
+import { sendEnquiryNotification } from '../email';
 
 export const crmRoutes = new Hono<{ Bindings: Env; Variables: Variables }>();
 
@@ -61,10 +62,20 @@ crmRoutes.post('/enquiries', async (c) => {
     };
     globalStore.leads.set(leadId, autoLead);
 
+    // Dispatch dual email alert to Naman Mishra (namanmishraofficial@gmail.com & info@digikhojindia.online)
+    const emailResult = await sendEnquiryNotification(newEnquiry, c.env);
+
     return c.json({
       success: true,
       message: 'Thank you for reaching out to Digikhojindia! Our technical team will contact you shortly.',
       enquiry_id: enquiryId,
+      enquiry: newEnquiry,
+      notification: {
+        sent: emailResult.success,
+        recipients: emailResult.recipients,
+        dispatch_id: emailResult.dispatchId,
+        provider: emailResult.provider,
+      },
     }, 201);
   } catch (err: any) {
     return c.json({ success: false, error: err.message || 'Submission failed' }, 500);
@@ -152,4 +163,10 @@ crmRoutes.get('/enquiries', requirePermission('crm:read'), async (c) => {
   const list = Array.from(globalStore.enquiries.values());
   list.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
   return c.json({ success: true, enquiries: list, total: list.length });
+});
+
+// List Inbound Lead Email Notification Dispatches
+crmRoutes.get('/email-dispatches', requirePermission('crm:read'), async (c) => {
+  const list = [...globalStore.emailDispatches].reverse();
+  return c.json({ success: true, dispatches: list, total: list.length });
 });

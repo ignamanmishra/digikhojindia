@@ -157,3 +157,4 @@ export const PortalCompanyView: React.FC = () => {
     </div>
   );
 };
+

@@ -254,3 +254,4 @@ Lists sales leads with stage tracking (`New` -> `Contacted` -> `Qualified` -> `P
 
 - `GET /api/reports/admin-overview`: Comprehensive executive dashboard metrics (customers, active projects, SLA adherence, monthly revenue).
 - `GET /api/reports/portal-summary`: Client cockpit summary (active software, unresolved tickets, AMC validity, pending payments).
+

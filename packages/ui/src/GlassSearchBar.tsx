@@ -45,3 +45,4 @@ export const GlassSearchBar: React.FC<GlassSearchBarProps> = ({
     </div>
   );
 };
+

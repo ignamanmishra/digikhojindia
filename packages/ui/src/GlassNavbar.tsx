@@ -147,3 +147,4 @@ export const GlassNavbar: React.FC<GlassNavbarProps> = ({
     </header>
   );
 };
+

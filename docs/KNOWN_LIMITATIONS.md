@@ -37,3 +37,4 @@
 
 - **Current Implementation:** In local testing and Vite development, `apps/api` uses a thread-safe, in-memory SQLite state store pre-seeded with verified test data (`tenant-dki-main`, `tenant-city-hospital`, `tenant-apex-diagnostics`).
 - **Production Path:** In Cloudflare production, standard D1 bindings (`c.env.DB.prepare(...)`) are executed using the exact schema defined in `packages/database/migrations/0001_initial_schema.sql`.
+

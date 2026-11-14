@@ -198,3 +198,4 @@ CREATE INDEX idx_invoices_customer ON invoices(customer_id);
 CREATE INDEX idx_leads_stage ON leads(stage);
 CREATE INDEX idx_audit_created ON audit_logs(created_at);
 ```
+

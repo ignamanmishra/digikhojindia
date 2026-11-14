@@ -61,3 +61,4 @@ export const AutomationView: React.FC = () => {
     </div>
   );
 };
+

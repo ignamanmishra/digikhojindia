@@ -64,3 +64,4 @@ export const GlassTabs: React.FC<GlassTabsProps> = ({
     </div>
   );
 };
+

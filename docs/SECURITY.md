@@ -91,3 +91,4 @@ All state modifications generate immutable audit logs stored in the `audit_logs`
 - Action Type (`CREATE`, `UPDATE`, `DELETE`, `REASSIGN`, `STATUS_CHANGE`)
 - Target Entity Type (`customer`, `ticket`, `invoice`, `lead`, `amc`)
 - Timestamp with millisecond precision
+

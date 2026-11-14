@@ -72,3 +72,4 @@ Configured in `apps/portal/.env` during Vite build.
 
 1. **Never Commit Secrets:** The `.env` file is excluded from Git tracking via `.gitignore`.
 2. **Production Secrets:** In Cloudflare production, never hardcode `JWT_SECRET` in `wrangler.toml`. Use `wrangler secret put JWT_SECRET` so that values are encrypted at rest in the Cloudflare KMS.
+

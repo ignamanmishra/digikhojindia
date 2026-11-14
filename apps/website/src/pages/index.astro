@@ -389,11 +389,41 @@ const industries = [
           </p>
 
           <div class="pt-4 space-y-4 text-xs text-slate-300">
+            <!-- Direct Phone & WhatsApp -->
+            <div class="flex items-center justify-between p-3.5 rounded-2xl bg-white/[0.04] border border-cyan-500/30 backdrop-blur-md shadow-[0_0_20px_rgba(66,221,245,0.15)]">
+              <div class="flex items-center gap-3">
+                <span class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 text-base">📞</span>
+                <div>
+                  <p class="text-slate-400 text-[11px]">Direct Phone & WhatsApp</p>
+                  <a href={BRAND_CONSTANTS.PHONE_TEL} class="font-black text-cyan-300 text-sm hover:underline">
+                    {BRAND_CONSTANTS.OFFICIAL_PHONE}
+                  </a>
+                </div>
+              </div>
+              <a
+                href={BRAND_CONSTANTS.WHATSAPP_LINK}
+                target="_blank"
+                rel="noreferrer"
+                class="text-[11px] font-bold text-white bg-emerald-600 hover:bg-emerald-500 px-3 py-1.5 rounded-xl shadow-md transition-all"
+              >
+                WhatsApp &rarr;
+              </a>
+            </div>
+
+            <!-- Emails -->
             <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-md">
               <span class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 text-base">📧</span>
               <div>
-                <p class="text-slate-400 text-[11px]">Official Inquiries</p>
-                <p class="font-bold text-white text-xs">{BRAND_CONSTANTS.OFFICIAL_EMAIL}</p>
+                <p class="text-slate-400 text-[11px]">Official Email Desks</p>
+                <p class="font-bold text-white text-xs">
+                  <a href={`mailto:${BRAND_CONSTANTS.SECONDARY_NOTIFICATION_EMAIL}`} class="hover:underline text-cyan-400">
+                    {BRAND_CONSTANTS.SECONDARY_NOTIFICATION_EMAIL}
+                  </a>
+                  <span class="text-slate-500 mx-1">•</span>
+                  <a href={`mailto:${BRAND_CONSTANTS.PRIMARY_NOTIFICATION_EMAIL}`} class="hover:underline text-cyan-400">
+                    {BRAND_CONSTANTS.PRIMARY_NOTIFICATION_EMAIL}
+                  </a>
+                </p>
               </div>
             </div>
 
@@ -401,7 +431,7 @@ const industries = [
               <span class="w-10 h-10 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400 text-base">👤</span>
               <div>
                 <p class="text-slate-400 text-[11px]">Executive Leadership</p>
-                <p class="font-bold text-white text-xs">{BRAND_CONSTANTS.OWNER_NAME} (Founder)</p>
+                <p class="font-bold text-white text-xs">{BRAND_CONSTANTS.OWNER_NAME} (Founder & Owner)</p>
               </div>
             </div>
 

@@ -63,3 +63,4 @@ The Admin Cockpit features a responsive collapsible sidebar, header with active 
 ### 2.9. Audit Logs & System Settings
 - Immutable activity log capturing user, timestamp, entity type, and operation.
 - Inspect system permissions and role assignments across the organization.
+

@@ -53,7 +53,7 @@ export const PortalHeader: React.FC<PortalHeaderProps> = ({
         {/* Priority Phone Helpline */}
         <div className="hidden md:flex items-center gap-2 text-xs text-slate-300 bg-white/[0.04] backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-xl shadow-sm">
           <PhoneCall size={13} className="text-cyan-400" />
-          <span>Priority Tech Desk: <strong className="text-white">+91 99999 99999</strong></span>
+          <span>Priority Tech Desk: <a href="tel:+918989828902" className="text-cyan-300 hover:underline font-bold">+91 89898 28902</a></span>
         </div>
 
         {/* Theme Toggle */}

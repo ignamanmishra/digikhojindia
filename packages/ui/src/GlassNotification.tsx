@@ -74,3 +74,4 @@ export const GlassNotification: React.FC<GlassNotificationProps> = ({
     </AnimatePresence>
   );
 };
+

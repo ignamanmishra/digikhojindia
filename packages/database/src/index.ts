@@ -26,3 +26,4 @@ export interface D1Database {
 
 export const MIGRATION_FILE = '0001_initial_schema.sql';
 export const SEED_FILE = 'seed.sql';
+

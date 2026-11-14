@@ -238,3 +238,4 @@ export const LeadsView: React.FC = () => {
     </div>
   );
 };
+

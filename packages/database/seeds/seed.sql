@@ -138,3 +138,4 @@ INSERT OR IGNORE INTO system_settings (key, value, description) VALUES
 ('tagline', 'We Don''t Just Build Software. We Automate Your Entire Business.', 'Official brand proposition'),
 ('footer_copyright', '© Digikhojindia. All Rights Reserved. Owned by Naman Mishra.', 'Mandatory global footer copyright'),
 ('amc_marketing_clause', 'Lifetime Free AMC – Subject to agreed contract terms.', 'Official AMC policy marketing statement');
+

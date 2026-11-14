@@ -161,3 +161,4 @@ authRoutes.post('/change-password', authMiddleware, async (c) => {
     return c.json({ success: false, error: err.message || 'Password update failed' }, 500);
   }
 });
+

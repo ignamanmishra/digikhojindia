@@ -71,3 +71,4 @@ export const GbpView: React.FC = () => {
     </div>
   );
 };
+

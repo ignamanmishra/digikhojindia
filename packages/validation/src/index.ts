@@ -226,3 +226,4 @@ export const videoSchema = z.object({
   category: z.string().min(2, 'Category is required'),
   is_published: z.boolean().default(true),
 });
+

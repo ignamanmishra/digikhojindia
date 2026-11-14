@@ -18,6 +18,10 @@ describe('Shared Utilities & Business Rules', () => {
       expect(BRAND_CONSTANTS.COMPANY_NAME).toBe('Digikhojindia');
       expect(BRAND_CONSTANTS.OWNER).toBe('Naman Mishra');
       expect(BRAND_CONSTANTS.EMAIL).toBe('info@digikhojindia.com');
+      expect(BRAND_CONSTANTS.PHONE).toBe('+91 89898 28902');
+      expect(BRAND_CONSTANTS.PHONE_RAW).toBe('+918989828902');
+      expect(BRAND_CONSTANTS.NOTIFICATION_EMAILS).toContain('namanmishraofficial@gmail.com');
+      expect(BRAND_CONSTANTS.NOTIFICATION_EMAILS).toContain('info@digikhojindia.online');
       expect(BRAND_CONSTANTS.TAGLINE).toBe("We Don't Just Build Software. We Automate Your Entire Business.");
       expect(BRAND_CONSTANTS.FOOTER_ATTRIBUTION).toBe('© Digikhojindia. All Rights Reserved. Owned by Naman Mishra.');
       expect(BRAND_CONSTANTS.AMC_MARKETING_PROPOSITION).toContain('Lifetime Free AMC');
@@ -98,3 +102,4 @@ describe('Shared Utilities & Business Rules', () => {
     });
   });
 });
+

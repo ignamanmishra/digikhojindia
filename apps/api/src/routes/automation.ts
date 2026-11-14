@@ -59,3 +59,4 @@ const activeWorkflows = [
 automationRoutes.get('/workflows', requirePermission('automation:read'), async (c) => {
   return c.json({ success: true, workflows: activeWorkflows });
 });
+

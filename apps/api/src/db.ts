@@ -23,6 +23,17 @@ import type {
   SystemSetting,
 } from '@digikhojindia/types';
 
+export interface EmailDispatchRecord {
+  id: string;
+  recipients: string[];
+  subject: string;
+  enquiry_id: string;
+  sent_at: string;
+  status: 'sent' | 'queued' | 'mocked';
+  service_provider?: string;
+  payload: any;
+}
+
 // In-memory data store for testing and fallback when Cloudflare D1 binding is not active
 export class DatabaseStore {
   users: Map<string, User & { password_hash: string }> = new Map();
@@ -43,6 +54,7 @@ export class DatabaseStore {
   videos: Map<string, VideoItem> = new Map();
   auditLogs: AuditLog[] = [];
   systemSettings: Map<string, string> = new Map();
+  emailDispatches: EmailDispatchRecord[] = [];
 
   constructor() {
     this.seedDefaults();

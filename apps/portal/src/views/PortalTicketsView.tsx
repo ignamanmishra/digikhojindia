@@ -294,3 +294,4 @@ export const PortalTicketsView: React.FC<{ initialTicketId?: string | null }> = 
     </div>
   );
 };
+
