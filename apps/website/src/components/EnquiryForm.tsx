@@ -51,7 +51,14 @@ export const EnquiryForm: React.FC<EnquiryFormProps> = ({
     setErrorMessage('');
 
     try {
-      const res = await fetch('http://localhost:8787/api/crm/enquiries', {
+      const endpoint =
+        typeof window !== 'undefined' &&
+        window.location.hostname !== 'localhost' &&
+        window.location.hostname !== '127.0.0.1'
+          ? '/api/crm/enquiries'
+          : 'http://localhost:8787/api/crm/enquiries';
+
+      const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

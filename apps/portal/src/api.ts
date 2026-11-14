@@ -3,7 +3,8 @@
  * Encapsulates secure client requests and tenant isolation
  */
 
-const API_BASE = 'http://localhost:8787/api';
+const isLocal = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+const API_BASE = !isLocal ? '/api' : ((import.meta as any).env?.VITE_API_BASE || 'http://localhost:8787/api');
 
 export function getPortalToken(): string | null {
   return localStorage.getItem('dki_portal_token');

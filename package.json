@@ -11,7 +11,7 @@
     "dev:website": "pnpm --filter @digikhojindia/website dev",
     "dev:admin": "pnpm --filter @digikhojindia/admin dev",
     "dev:portal": "pnpm --filter @digikhojindia/portal dev",
-    "build": "pnpm -r build",
+    "build": "pnpm -r build && node scripts/bundle-apps.js",
     "build:packages": "pnpm --filter \"./packages/*\" build",
     "test": "vitest run",
     "test:watch": "vitest",
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@types/node": "^22.10.2",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "vitest": "^2.1.8",
+    "wrangler": "^3.114.17"
   }
 }

@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "digikhojindia",
+  "main": "apps/api/src/index.ts",
+  "compatibility_date": "2024-11-12",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "apps/website/dist",
+    "binding": "ASSETS"
+  },
+  "vars": {
+    "PLATFORM_NAME": "Digikhojindia",
+    "PLATFORM_TAGLINE": "We Don't Just Build Software. We Automate Your Entire Business.",
+    "OWNER_NAME": "Naman Mishra",
+    "SUPPORT_EMAIL": "info@digikhojindia.online",
+    "OFFICIAL_PHONE": "+91 89898 28902",
+    "ENVIRONMENT": "production"
+  }
+}
